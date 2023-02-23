@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="demo1.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header> Top Những Việc Không Làm Được !!</header>
+        <div class="inputField">
+            <input type="text" placeholder="Add Todo">
+            <Button>+</Button>
+        </div>
+        <ul class="todolist">
+          
+        </ul>
+        <!-- <div class="footer">
+            <span> You Have 4 Task</span>
+            <button>Clear All</button>
+        </div> -->
+    </div>
+    <script>
+        const inputbox = document.querySelector(".inputField input");
+        const addbtn = document.querySelector(".inputField button");
+        const todoList = document.querySelector(".todolist");
+    
+        inputbox.onkeyup =()=> {
+            let userData =inputbox.value;
+            if(userData.trim() != 0){
+                addbtn.classList.add("active");
+            }
+            else{
+                addbtn.classList.remove("active");
+            }
+        }
+        showTask();
+
+        addbtn.onclick = ()=>{
+            let userData = inputbox.value;
+            let getlocalStorage = localStorage.getItem("New Todo");
+            if(getlocalStorage == null){
+                listArr = [];
+
+            }
+            else{
+                listArr = JSON.parse(getlocalStorage);
+            }
+            listArr.push(userData);
+            localStorage.setItem("New Todo", JSON.stringify(listArr));
+             showTask();
+        }
+
+        function showTask (){
+            let getlocalStorage = localStorage.getItem("New Todo");
+            if(getlocalStorage == null){
+                listArr = [];
+
+            }
+            else{
+                listArr = JSON.parse(getlocalStorage);
+            }
+            let newLiTag ='';
+            listArr.forEach((element,index) =>{
+                newLiTag += `<li> ${element} <span onclick="deletetask(${index})">-</span> </li>`;
+            });
+            todoList.innerHTML = newLiTag;
+            inputbox.value ="";
+        }
+        
+        function deletetask(index) {
+            let getlocalStorage = localStorage.getItem("New Todo");
+            listArr = JSON.parse(getlocalStorage);
+            listArr.splice(index,1);
+            
+            localStorage.setItem("New Todo", JSON.stringify(listArr));
+            showTask();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(120deg, #bd11a0,#4b49d1);
+}
+.wrapper{
+    margin: 120px auto;
+    max-width: 400px;
+    width: 100%;
+    padding:25px;
+    border-radius: 5px;
+    background: #fff;
+}
+.wrapper header{
+    font-size:20px;
+    font-weight:600;
+}
+.wrapper .inputField{
+    display: flex;
+    height:45px;
+    width: 100%;
+}
+.inputField input{
+    width: 85%;
+    height:100%;
+    border:1px solid #ccc;
+    font-size:17px;
+    /* border-radius: 3px; */
+    padding-left: 15px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgb(110, 47, 47);
+}
+.inputField button{
+    width: 60px;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: linear-gradient(120deg, #bd11a0,#4b49d1);
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+    margin-left: 5px;
+    border-radius: 5px;
+    opacity: 0.6;
+    pointer-events: none;
+}
+.inputField button.active{
+    
+    opacity: 1;
+    pointer-events: auto;
+}
+.wrapper .todolist{
+    max-height: 250px;
+    overflow-y: auto;
+}
+.todolist li{
+    list-style: none;
+    height: 45px;
+    margin-top: 10px;
+    line-height: 45px;
+    position: relative;
+    background: #f2f2f2;
+    border-radius: 10px;
+    padding: 0 15px ;
+    border-bottom: 8px;
+    cursor: default;
+    overflow: hidden;
+
+}
+.todolist li span {
+    position: absolute;
+    right: -45px;
+    font-size: 30px;
+    font-weight: bold;
+    background: #db4a4a;
+    color:white;
+    text-align: center;
+    width:45px;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.todolist li:hover span {
+    right: 0px;
+}
+.wrapper .footer{
+    display: flex;
+    width: 100%;
+    margin-top:20px;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.footer button {
+    border: none;
+    outline:none;
+    background: linear-gradient(120deg, #bd11a0,#4b49d1);
+    color:#fff;
+    font-size: 25px;
+    border-radius: 5px;
+    padding:6px 10px;
+
+}
